@@ -1,0 +1,18 @@
+.buttons-verfication {
+    width: "auto";
+    padding: "6px 20px";
+    position: "absolute";
+    right: 175;
+    top: 30;
+    border-radius: "7px";
+    color: "black";
+    background: "white";
+}
+.image-list{
+    height: fit-content;
+        margin-bottom: 45px;
+        overflow: hidden;
+        position: relative;
+        width: fit-content;
+      
+}

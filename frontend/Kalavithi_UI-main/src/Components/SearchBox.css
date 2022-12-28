@@ -1,0 +1,11 @@
+.navbar-input {
+    margin-right: auto;
+    width: 33vw;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

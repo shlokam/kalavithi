@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
+
+.heart-btn {
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+}
+
+.content {
+
+  background-color: transparent;
+
+  padding: 13px 16px;
+  display: flex;
+  border: 0px;
+
+  cursor: pointer;
+}
+
+.content.heart-active {}
+
+.heart {
+  position: absolute;
+  background: url("img.png") no-repeat;
+  background-position: left;
+  background-size: 2900%;
+  height: 90px;
+  width: 90px;
+  top: 50%;
+  left: 21%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  font-size: 21px;
+  margin-left: 30px;
+  color: grey;
+  font-family: "Montserrat", sans-serif;
+}
+
+.numb:before {
+  content: "12";
+  font-size: 21px;
+  margin-left: 7px;
+  font-weight: 600;
+  color: #9c9496;
+  font-family: sans-serif;
+}
+
+.numb.heart-active:before {
+  content: "13";
+  color: #000;
+}
+
+.text.heart-active {
+  color: #000;
+}
+
+.heart.heart-active {
+  animation: animate 0.8s steps(28) 1;
+  background-position: right;
+}
+
+@keyframes animate {
+  0% {
+    background-position: left;
+  }
+
+  100% {
+    background-position: right;
+  }
+}

@@ -1,0 +1,55 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@1.2.6
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.16.0
+
+    steps:
+      - checkout
+      - run: npm install --production
+      - run: CI=false npm run build
+
+  test:
+    docker:
+      - image: cimg/node:16.16.0
+    steps:
+      - checkout
+      - run: npm install --production
+      - run: npm run test
+
+  deploy_to_dev_env:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_DEV_ENV_APP_NAME
+
+  deploy_to_test_env:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_TEST_ENV_APP_NAME
+
+workflows:
+  kalavithi_ui_deployment:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy_to_dev_env:
+          requires:
+            - build
+            - test
+      - approve_deploy_to_test_env:
+          type: approval
+          requires:
+            - deploy_to_dev_env
+      - deploy_to_test_env:
+          requires:
+            - approve_deploy_to_test_env

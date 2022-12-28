@@ -1,0 +1,40 @@
+.image {
+    width: 100vh;
+    height: 70vh;
+    align-items: center;
+    object-fit:fill;
+    border-radius: 1%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.right-arrow {
+    position: absolute;
+    top: 42%;
+    right: 8px;
+    font-size: 2rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.left-arrow {
+    position: absolute;
+    top: 42%;
+    left: 8px;
+    font-size: 2rem;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.close {
+    position: fixed;
+
+    font-size: 1.5rem;
+
+    margin-top: 1%;
+}

@@ -1,0 +1,28 @@
+#formText {
+  color: black;
+}
+
+.buttons {
+  margin-right: 35%;
+}
+
+#formText.formValues:after {
+  content: " *";
+  color: red;
+}
+
+.pop-up {
+}
+
+.input-field {
+  margin-bottom: 5%;
+}
+
+.pt {
+  background-color: black;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}

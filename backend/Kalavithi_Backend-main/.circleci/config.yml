@@ -1,0 +1,49 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@1.0.1
+
+jobs:
+
+  build_test:
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx512m
+    docker:
+      - image: cimg/openjdk:11.0.12
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+                sudo chmod +x ./gradlew
+                ./gradlew clean test
+
+  deploy_to_dev_env:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_DEV_ENV_APP_NAME
+
+  deploy_to_test_env:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_TEST_ENV_APP_NAME
+
+workflows:
+  kalavithi_service_deployment:
+    jobs:
+      - build_test
+      - deploy_to_dev_env:
+          requires:
+            - build_test
+      - approve_deploy_to_test_env:
+          type: approval
+          requires:
+            - deploy_to_dev_env
+      - deploy_to_test_env:
+          requires:
+            - approve_deploy_to_test_env

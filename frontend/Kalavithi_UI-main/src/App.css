@@ -1,0 +1,68 @@
+body {
+  background-color: black;
+  min-height: 100vh;
+}
+
+.kala-app {
+  background-color: black;
+  min-height: 100vh;
+}
+
+.mt {
+  background-color: black;
+}
+
+.kala-app>.row {
+  overflow-x: hidden;
+
+  flex-wrap: nowrap;
+}
+
+.image-container {
+  /* width: 30%;
+  height: calc(30% * (16 / 9)); */
+  position: relative;
+  transition: transform 0.2s;
+  margin: auto;
+  margin-bottom: 10%;
+}
+
+.image-container:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.background-black {
+  background-color: black;
+}
+
+.no-page {
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  top: 50px;
+
+}

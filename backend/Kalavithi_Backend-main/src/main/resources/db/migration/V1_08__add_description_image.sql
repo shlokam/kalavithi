@@ -1,0 +1,1 @@
+alter table image add description varchar(500);
